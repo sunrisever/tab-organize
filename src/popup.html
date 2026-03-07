@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>标签页智能分组</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>标签页智能分组</h1>
+
+    <!-- 步骤1：导出 -->
+    <section class="step">
+      <div class="step-header">
+        <span class="step-number">1</span>
+        <span class="step-title">导出标签页</span>
+      </div>
+      <p class="tab-count">当前窗口共 <strong id="tabCount">--</strong> 个标签页</p>
+      <button id="exportBtn" class="btn btn-primary">导出到剪贴板</button>
+      <div id="exportStatus" class="status" hidden></div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 步骤2：导入 -->
+    <section class="step">
+      <div class="step-header">
+        <span class="step-number">2</span>
+        <span class="step-title">导入分组方案</span>
+      </div>
+      <textarea id="jsonInput" placeholder="粘贴 JSON 或拖拽 .json 文件到此处..."></textarea>
+      <div class="btn-row">
+        <button id="fileBtn" class="btn btn-secondary">选择文件</button>
+        <button id="importBtn" class="btn btn-success">应用分组</button>
+      </div>
+      <input type="file" id="fileInput" accept=".json" hidden>
+      <div id="importStatus" class="status" hidden></div>
+    </section>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

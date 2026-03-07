@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "标签页智能分组",
+  "version": "1.1.0",
+  "description": "导出标签页信息给 Claude 分析，再导入分组方案一键应用。支持 CDP 自动化。",
+  "permissions": ["tabs", "tabGroups", "alarms"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
