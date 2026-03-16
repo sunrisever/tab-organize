@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tab Organize"
+  short_description: "Organize browser tabs with JSON export/import workflows"
+  default_prompt: "Use $tab-organize to export, regroup, and apply browser tab groups with the included Edge/Chrome extension."

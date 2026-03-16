@@ -14,25 +14,76 @@
     <section class="step">
       <div class="step-header">
         <span class="step-number">1</span>
-        <span class="step-title">导出标签页</span>
+        <span class="step-title">导出标签页 JSON</span>
       </div>
       <p class="tab-count">当前窗口共 <strong id="tabCount">--</strong> 个标签页</p>
-      <button id="exportBtn" class="btn btn-primary">导出到剪贴板</button>
+      <p class="hint">导出标准 JSON 文件，建议直接保存到桌面，后续我会基于这个文件帮你生成分组文件。</p>
+      <button id="exportBtn" class="btn btn-primary">导出 JSON 文件</button>
       <div id="exportStatus" class="status" hidden></div>
     </section>
 
     <div class="divider"></div>
 
-    <!-- 步骤2：导入 -->
+    <!-- 步骤2：重复标签去重 -->
     <section class="step">
       <div class="step-header">
         <span class="step-number">2</span>
-        <span class="step-title">导入分组方案</span>
+        <span class="step-title">重复标签去重</span>
       </div>
-      <textarea id="jsonInput" placeholder="粘贴 JSON 或拖拽 .json 文件到此处..."></textarea>
+      <p class="tab-count">
+        当前窗口检测到 <strong id="duplicateGroupCount">--</strong> 组重复标签，
+        可关闭 <strong id="duplicateTabCount">--</strong> 个
+      </p>
+      <p class="hint">按规范化 URL 去重，优先保留已固定、当前活跃、靠前的标签页。</p>
       <div class="btn-row">
-        <button id="fileBtn" class="btn btn-secondary">选择文件</button>
-        <button id="importBtn" class="btn btn-success">应用分组</button>
+        <button id="scanBtn" class="btn btn-secondary">重新扫描</button>
+        <button id="dedupeBtn" class="btn btn-warning">关闭重复标签</button>
+      </div>
+      <div id="dedupeStatus" class="status" hidden></div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 步骤3：常见标签清理 -->
+    <section class="step">
+      <div class="step-header">
+        <span class="step-number">3</span>
+        <span class="step-title">常见标签清理</span>
+      </div>
+      <p class="tab-count">
+        当前窗口检测到 <strong id="cleanupTabCount">--</strong> 个可选清理标签
+      </p>
+      <p class="hint">仅扫描 B 站首页和新建标签页，搜索页不会被纳入清理。</p>
+      <div class="btn-row">
+        <button id="scanCleanupBtn" class="btn btn-secondary">重新扫描</button>
+        <button id="cleanupBtn" class="btn btn-warning">关闭这些标签</button>
+      </div>
+      <div id="cleanupStatus" class="status" hidden></div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 步骤4：导入 -->
+    <section class="step">
+      <div class="step-header">
+        <span class="step-number">4</span>
+        <span class="step-title">导入分组 JSON</span>
+      </div>
+      <p class="hint">选择我整理后生成的标准分组 JSON 文件，建议也放在桌面；也支持直接把桌面 JSON 拖进下方区域。</p>
+      <div
+        id="importDropZone"
+        class="drop-zone"
+        tabindex="0"
+        role="button"
+        aria-label="拖拽或选择分组 JSON 文件"
+      >
+        <div class="drop-zone-title">拖拽分组 JSON 到这里</div>
+        <div class="drop-zone-subtitle">也可以继续使用下方按钮选择文件</div>
+        <div id="importFileMeta" class="file-meta">未选择分组 JSON 文件</div>
+      </div>
+      <div class="btn-row">
+        <button id="pickFileBtn" class="btn btn-secondary">选择分组 JSON</button>
+        <button id="importBtn" class="btn btn-success" disabled>应用分组</button>
       </div>
       <input type="file" id="fileInput" accept=".json" hidden>
       <div id="importStatus" class="status" hidden></div>

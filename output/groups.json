@@ -1,4 +1,6 @@
 {
+  "type": "tab-organize.groups",
+  "version": "1.0",
   "groups": [
     {
       "name": "NotebookLM",

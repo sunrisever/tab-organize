@@ -1,0 +1,56 @@
+{
+  "type": "tab-organize.export",
+  "version": "1.0",
+  "exportedAt": "2026-03-16T18:30:00.000Z",
+  "source": {
+    "browser": "Edge",
+    "windowId": 123,
+    "tabCount": 4
+  },
+  "validColors": ["grey", "blue", "red", "yellow", "green", "pink", "purple", "cyan", "orange"],
+  "instructions": {
+    "task": "按主题或用途对当前窗口标签页分组",
+    "outputFileNameHint": "tab-organize-groups-YYYYMMDD-HHMMSS.json",
+    "outputSchema": {
+      "type": "tab-organize.groups",
+      "version": "1.0",
+      "groups": [
+        {
+          "name": "组名",
+          "color": "blue",
+          "tabs": [1, 2]
+        }
+      ]
+    }
+  },
+  "tabs": [
+    {
+      "index": 1,
+      "title": "Claude",
+      "url": "https://claude.ai/",
+      "active": true,
+      "pinned": false
+    },
+    {
+      "index": 2,
+      "title": "GitHub",
+      "url": "https://github.com/",
+      "active": false,
+      "pinned": false
+    },
+    {
+      "index": 3,
+      "title": "Bilibili",
+      "url": "https://www.bilibili.com/",
+      "active": false,
+      "pinned": false
+    },
+    {
+      "index": 4,
+      "title": "新标签页",
+      "url": "edge://newtab/",
+      "active": false,
+      "pinned": false
+    }
+  ]
+}
