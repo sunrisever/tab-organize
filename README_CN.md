@@ -1,6 +1,6 @@
 [English](README.md) | 简体中文
 
-# 标签页智能分组 — AI 驱动的浏览器标签页分组扩展
+# 标签页智能分组 — AI 辅助的浏览器标签页分组扩展
 
 借助 AI（Claude、ChatGPT 等）对浏览器标签页进行智能分组整理的 Edge/Chrome 扩展。
 

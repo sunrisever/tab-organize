@@ -1,6 +1,6 @@
 English | [简体中文](README_CN.md)
 
-# Tab Organize — AI-Powered Browser Tab Grouping Extension
+# Tab Organize — AI-Assisted Browser Tab Grouping Extension
 
 An Edge/Chrome extension that uses AI (Claude, ChatGPT, etc.) to intelligently group your browser tabs.
 
