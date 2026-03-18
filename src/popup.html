@@ -1,24 +1,33 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>标签页智能分组</title>
+  <title>Tab Organize</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
   <div class="container">
-    <h1>标签页智能分组</h1>
+    <div class="topbar">
+      <h1 data-i18n="appTitle">Tab Organize</h1>
+      <label class="lang-switch">
+        <span data-i18n="languageLabel">Language</span>
+        <select id="languageSelect" aria-label="Language">
+          <option value="en">English</option>
+          <option value="zh-CN">中文</option>
+        </select>
+      </label>
+    </div>
 
     <!-- 步骤1：导出 -->
     <section class="step">
       <div class="step-header">
         <span class="step-number">1</span>
-        <span class="step-title">导出标签页 JSON</span>
+        <span class="step-title" data-i18n="step1Title">Export Tabs JSON</span>
       </div>
-      <p class="tab-count">当前窗口共 <strong id="tabCount">--</strong> 个标签页</p>
-      <p class="hint">导出标准 JSON 文件，建议直接保存到桌面，后续我会基于这个文件帮你生成分组文件。</p>
-      <button id="exportBtn" class="btn btn-primary">导出 JSON 文件</button>
+      <p class="tab-count" data-i18n-html="tabCountLine">Current window: <strong id="tabCount">--</strong> tabs</p>
+      <p class="hint" data-i18n="step1Hint">Export a standard JSON file. Saving it to the desktop is recommended so it can be used later to generate grouping output.</p>
+      <button id="exportBtn" class="btn btn-primary" data-i18n="exportButton">Export JSON File</button>
       <div id="exportStatus" class="status" hidden></div>
     </section>
 
@@ -28,16 +37,16 @@
     <section class="step">
       <div class="step-header">
         <span class="step-number">2</span>
-        <span class="step-title">重复标签去重</span>
+        <span class="step-title" data-i18n="step2Title">Duplicate Tab Cleanup</span>
       </div>
-      <p class="tab-count">
-        当前窗口检测到 <strong id="duplicateGroupCount">--</strong> 组重复标签，
-        可关闭 <strong id="duplicateTabCount">--</strong> 个
+      <p class="tab-count" data-i18n-html="duplicateSummaryLine">
+        Detected <strong id="duplicateGroupCount">--</strong> duplicate groups,
+        with <strong id="duplicateTabCount">--</strong> tabs available to close
       </p>
-      <p class="hint">按规范化 URL 去重，优先保留已固定、当前活跃、靠前的标签页。</p>
+      <p class="hint" data-i18n="step2Hint">Deduplicate by normalized URL, preferring pinned, active, and earlier tabs.</p>
       <div class="btn-row">
-        <button id="scanBtn" class="btn btn-secondary">重新扫描</button>
-        <button id="dedupeBtn" class="btn btn-warning">关闭重复标签</button>
+        <button id="scanBtn" class="btn btn-secondary" data-i18n="rescanButton">Rescan</button>
+        <button id="dedupeBtn" class="btn btn-warning" data-i18n="dedupeButton">Close Duplicates</button>
       </div>
       <div id="dedupeStatus" class="status" hidden></div>
     </section>
@@ -48,15 +57,15 @@
     <section class="step">
       <div class="step-header">
         <span class="step-number">3</span>
-        <span class="step-title">常见标签清理</span>
+        <span class="step-title" data-i18n="step3Title">Common Tab Cleanup</span>
       </div>
-      <p class="tab-count">
-        当前窗口检测到 <strong id="cleanupTabCount">--</strong> 个可选清理标签
+      <p class="tab-count" data-i18n-html="cleanupSummaryLine">
+        Detected <strong id="cleanupTabCount">--</strong> optional cleanup tabs
       </p>
-      <p class="hint">仅扫描 B 站首页和新建标签页，搜索页不会被纳入清理。</p>
+      <p class="hint" data-i18n="step3Hint">Only Bilibili home tabs and new-tab pages are included. Search pages are not affected.</p>
       <div class="btn-row">
-        <button id="scanCleanupBtn" class="btn btn-secondary">重新扫描</button>
-        <button id="cleanupBtn" class="btn btn-warning">关闭这些标签</button>
+        <button id="scanCleanupBtn" class="btn btn-secondary" data-i18n="rescanButton">Rescan</button>
+        <button id="cleanupBtn" class="btn btn-warning" data-i18n="cleanupButton">Close These Tabs</button>
       </div>
       <div id="cleanupStatus" class="status" hidden></div>
     </section>
@@ -67,23 +76,23 @@
     <section class="step">
       <div class="step-header">
         <span class="step-number">4</span>
-        <span class="step-title">导入分组 JSON</span>
+        <span class="step-title" data-i18n="step4Title">Import Groups JSON</span>
       </div>
-      <p class="hint">选择我整理后生成的标准分组 JSON 文件，建议也放在桌面；也支持直接把桌面 JSON 拖进下方区域。</p>
+      <p class="hint" data-i18n="step4Hint">Choose a standard groups JSON file, ideally from the desktop. You can also drag a desktop JSON file into the area below.</p>
       <div
         id="importDropZone"
         class="drop-zone"
         tabindex="0"
         role="button"
-        aria-label="拖拽或选择分组 JSON 文件"
+        aria-label="Drag or choose groups JSON file"
       >
-        <div class="drop-zone-title">拖拽分组 JSON 到这里</div>
-        <div class="drop-zone-subtitle">也可以继续使用下方按钮选择文件</div>
-        <div id="importFileMeta" class="file-meta">未选择分组 JSON 文件</div>
+        <div class="drop-zone-title" data-i18n="dropZoneTitle">Drop Groups JSON Here</div>
+        <div class="drop-zone-subtitle" data-i18n="dropZoneSubtitle">Or use the button below to choose a file</div>
+        <div id="importFileMeta" class="file-meta" data-i18n="noGroupFileSelected">No groups JSON file selected</div>
       </div>
       <div class="btn-row">
-        <button id="pickFileBtn" class="btn btn-secondary">选择分组 JSON</button>
-        <button id="importBtn" class="btn btn-success" disabled>应用分组</button>
+        <button id="pickFileBtn" class="btn btn-secondary" data-i18n="pickFileButton">Choose Groups JSON</button>
+        <button id="importBtn" class="btn btn-success" disabled data-i18n="applyGroupsButton">Apply Groups</button>
       </div>
       <input type="file" id="fileInput" accept=".json" hidden>
       <div id="importStatus" class="status" hidden></div>

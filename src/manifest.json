@@ -1,14 +1,16 @@
 {
   "manifest_version": 3,
-  "name": "标签页智能分组",
+  "default_locale": "en",
+  "name": "__MSG_extName__",
   "version": "1.3.0",
-  "description": "导出桌面 JSON 文件给 AI 分析，再导入标准分组 JSON 一键应用；支持重复标签去重和常见标签清理。",
+  "description": "__MSG_extDescription__",
   "permissions": ["tabs", "tabGroups", "alarms", "downloads"],
   "background": {
     "service_worker": "background.js"
   },
   "action": {
     "default_popup": "popup.html",
+    "default_title": "__MSG_extName__",
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",

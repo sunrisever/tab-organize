@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "标签页智能分组"
+  },
+  "extDescription": {
+    "message": "导出桌面 JSON 文件给 AI 分析，再导入标准分组 JSON 一键应用；支持重复标签去重和常见标签清理。"
+  }
+}

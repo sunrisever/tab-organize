@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Tab Organize"
+  },
+  "extDescription": {
+    "message": "Export tabs as JSON for AI-assisted grouping, then import a standard groups JSON to apply tab groups. Includes duplicate-tab cleanup and common-tab cleanup."
+  }
+}
